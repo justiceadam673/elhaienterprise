@@ -1,139 +1,237 @@
-const capabilities = [
+import { motion } from 'framer-motion'
+
+const services = [
   {
-    number: '01',
-    title: 'Find the signal.',
-    description:
-      'We uncover where AI can make a meaningful difference, then shape a roadmap your people can actually use.',
-    tag: 'STRATEGY & DISCOVERY',
+    title: 'Solar marketing & lead generation',
+    text: 'Campaigns, demand generation, and digital funnels that turn interest into booked solar consultations.',
+    accent: '01',
   },
   {
-    number: '02',
-    title: 'Build with purpose.',
-    description:
-      'From intelligent workflows to custom tools, we make practical technology that fits the way your business works.',
-    tag: 'AI & AUTOMATION',
+    title: 'Residential & commercial installation',
+    text: 'End-to-end solar rooftop and power-system installation designed for performance, reliability, and long-term savings.',
+    accent: '02',
   },
   {
-    number: '03',
-    title: 'Make it stick.',
-    description:
-      'We bring your teams along, measure what changes, and keep improving long after the first launch.',
-    tag: 'ENABLEMENT & GROWTH',
+    title: 'Import/export & supply chain support',
+    text: 'Strategic sourcing and logistics for clean-energy hardware, panels, batteries, and project-ready equipment.',
+    accent: '03',
+  },
+  {
+    title: 'General contracting & project delivery',
+    text: 'Skilled site coordination, civil and electrical execution, and turnkey project management for solar deployment.',
+    accent: '04',
   },
 ]
 
-function ArrowIcon() {
-  return <span className="arrow-icon" aria-hidden="true">↗</span>
+const stats = [
+  { label: 'Solar projects delivered', value: '180+' },
+  { label: 'MW installed', value: '42 MW' },
+  { label: 'Client retention', value: '94%' },
+  { label: 'Avg. savings unlocked', value: '31%' },
+]
+
+const process = [
+  'Energy audit and feasibility review',
+  'Design, procurement, and financing strategy',
+  'Installation, commissioning, and quality checks',
+  'Performance tracking and optimization',
+]
+
+function LogoMark() {
+  return (
+    <motion.div
+      className="brand-mark"
+      initial={{ rotate: -12, scale: 0.9, opacity: 0.7 }}
+      animate={{ rotate: 0, scale: 1, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      aria-hidden="true"
+    >
+      <svg viewBox="0 0 120 120" role="img">
+        <defs>
+          <linearGradient id="sunGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#ffe799" />
+            <stop offset="45%" stopColor="#f9b93d" />
+            <stop offset="100%" stopColor="#d97706" />
+          </linearGradient>
+        </defs>
+        <circle cx="58" cy="42" r="22" fill="url(#sunGlow)" />
+        <path d="M18 84h62c11 0 20-9 20-20v-2H44c-13 0-24 11-24 24v2Z" fill="#0a2232" />
+        <path d="M38 18h48v20H38zm-8 28h64v18H30zm-6 28h76v16H24z" fill="#0d2f3d" opacity="0.96" />
+        <path d="M55 20l10 18-12 6-8-10-3 12-9-7 8-10-12-9 17-1 8-10 1 11Z" fill="#fff4b8" opacity="0.8" />
+      </svg>
+    </motion.div>
+  )
 }
 
 function App() {
   return (
-    <main id="top">
+    <div className="solar-page" id="top">
       <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="ELHAI Enterprise home">
-          <span className="wordmark-symbol" aria-hidden="true"><i /><i /><i /></span>
-          <span>ELHAI<span className="wordmark-light">ENTERPRISE</span></span>
+        <a className="brand" href="#top" aria-label="ELHAI Enterprise home">
+          <LogoMark />
+          <span className="brand-text">
+            <strong>ELHAI</strong>
+            <span>ENTERPRISE</span>
+          </span>
         </a>
+
         <nav className="main-nav" aria-label="Main navigation">
-          <a href="#approach">Approach</a>
-          <a href="#capabilities">Capabilities</a>
-          <a className="nav-contact" href="#contact">Let’s talk <ArrowIcon /></a>
+          <a href="#solutions">Solutions</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Let’s talk</a>
         </nav>
       </header>
 
-      <section className="hero" aria-labelledby="hero-title">
-        <img
-          className="hero-image"
-          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2400&q=88"
-          alt="Sunlit, modern workspace ready for a team to collaborate"
-        />
-        <div className="hero-shade" />
-        <div className="hero-content">
-          <p className="eyebrow hero-eyebrow"><span className="eyebrow-dot" /> HUMAN THINKING. MACHINE POTENTIAL.</p>
-          <h1 id="hero-title">Enterprise AI<br />that moves <em>work</em><br />forward.</h1>
-          <div className="hero-bottom">
-            <p>We help ambitious teams turn emerging technology into clearer decisions, better experiences, and work that matters.</p>
-            <a className="circle-link" href="#capabilities" aria-label="Explore our capabilities"><ArrowIcon /></a>
-          </div>
-        </div>
-        <div className="hero-caption"><span>01 / 03</span><span>INTELLIGENCE, IN OPERATION</span></div>
-      </section>
+      <main>
+        <section className="hero-section">
+          <div className="hero-backdrop" />
+          <motion.div
+            className="hero-copy"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
+            <p className="eyebrow">Clean power. Smarter growth.</p>
+            <h1>
+              Solar marketing, installations,<br />
+              and energy systems that <span>move business forward.</span>
+            </h1>
+            <p className="lead">
+              ELHAI Enterprise helps homes, businesses, and project developers unlock dependable renewable energy through strategy, deployment, and performance-focused execution.
+            </p>
+            <div className="hero-actions">
+              <a className="primary-button" href="#contact">Book a consultation</a>
+              <a className="secondary-button" href="#solutions">Explore services</a>
+            </div>
 
-      <section className="intro section-pad" id="approach">
-        <p className="eyebrow section-eyebrow">A BETTER KIND OF PROGRESS</p>
-        <div className="intro-copy">
-          <h2>Technology should feel like <span>a new beginning.</span></h2>
-          <div className="intro-aside">
-            <p>Not another layer of complexity. A clearer way to think, make, and move. We pair human insight with useful AI to help your business get there.</p>
-            <a className="text-link" href="#capabilities">How we help <ArrowIcon /></a>
-          </div>
-        </div>
-        <div className="ticker" aria-label="Think clearly. Build boldly. Move forward.">
-          <div className="ticker-track" aria-hidden="true">
-            <span>THINK CLEARLY <b>✳</b> BUILD BOLDLY <b>✳</b> MOVE FORWARD <b>✳</b>&nbsp;</span>
-            <span>THINK CLEARLY <b>✳</b> BUILD BOLDLY <b>✳</b> MOVE FORWARD <b>✳</b>&nbsp;</span>
-          </div>
-        </div>
-      </section>
+            <div className="hero-trust" aria-label="Trust indicators">
+              <span>Residential</span>
+              <span>Commercial</span>
+              <span>Industrial</span>
+            </div>
+          </motion.div>
 
-      <section className="capabilities section-pad" id="capabilities">
-        <div className="capabilities-heading">
-          <p className="eyebrow section-eyebrow">FROM FIRST QUESTION TO WHAT’S NEXT</p>
-          <h2>Make the complex<br /><span>feel possible.</span></h2>
-        </div>
-        <div className="capability-list">
-          {capabilities.map((capability) => (
-            <article className="capability" key={capability.number}>
-              <span className="capability-number">{capability.number}</span>
-              <div className="capability-main">
-                <p className="capability-tag">{capability.tag}</p>
-                <h3>{capability.title}</h3>
+          <motion.div
+            className="hero-panel"
+            initial={{ opacity: 0, x: 36 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
+          >
+            <div className="panel-card main-card">
+              <div className="mini-label">Project pipeline</div>
+              <div className="panel-value">7.4 GW</div>
+              <div className="panel-bar">
+                <span />
               </div>
-              <p className="capability-description">{capability.description}</p>
-              <ArrowIcon />
-            </article>
+              <div className="panel-meta">
+                <span>Energy growth</span>
+                <strong>+28%</strong>
+              </div>
+            </div>
+
+            <div className="panel-card floating-card">
+              <div className="mini-label">Current focus</div>
+              <strong>Solar + storage</strong>
+              <p>Rooftop systems, commercial arrays, and hybrid energy solutions.</p>
+            </div>
+          </motion.div>
+        </section>
+
+        <section className="stats-section" aria-label="Performance stats">
+          {stats.map((stat) => (
+            <div className="stat-box" key={stat.label}>
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+            </div>
           ))}
-        </div>
-      </section>
+        </section>
 
-      <section className="feature" aria-labelledby="feature-title">
-        <div className="feature-image-wrap">
-          <img
-            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=88"
-            alt="Colleagues sharing ideas around a table"
-            loading="lazy"
-          />
-          <span className="image-note">GOOD IDEAS GET BETTER TOGETHER</span>
-        </div>
-        <div className="feature-copy">
-          <p className="eyebrow">PEOPLE FIRST, ALWAYS</p>
-          <h2 id="feature-title">Built around<br />the people<br />doing the <em>work.</em></h2>
-          <p>Real transformation starts with listening. We bring your team into the process early, make the unfamiliar feel approachable, and build things people are glad to use.</p>
-          <a className="feature-link" href="#contact">Meet your next possibility <ArrowIcon /></a>
-          <span className="feature-index">ELHAI / 2025</span>
-        </div>
-      </section>
+        <section className="services-section section-shell" id="solutions">
+          <div className="section-heading">
+            <p className="eyebrow eyebrow-dark">What we do</p>
+            <h2>Built for solar growth at every stage.</h2>
+          </div>
 
-      <footer className="contact section-pad" id="contact">
-        <div className="contact-topline">
-          <span className="eyebrow">A GOOD PLACE TO START</span>
-          <span className="contact-mark" aria-hidden="true">✳</span>
-        </div>
-        <h2>Ready for work<br />to feel <em>different?</em></h2>
-        <div className="contact-bottom">
-          <p>Let’s find the useful idea hiding in plain sight.</p>
-          <a className="contact-button" href="mailto:hello@elhaienterprise.com">Start a conversation <ArrowIcon /></a>
-        </div>
-        <div className="footer-meta">
-          <a className="wordmark footer-wordmark" href="#top">
-            <span className="wordmark-symbol" aria-hidden="true"><i /><i /><i /></span>
-            <span>ELHAI<span className="wordmark-light">ENTERPRISE</span></span>
-          </a>
-          <span>HUMAN THINKING. MACHINE POTENTIAL.</span>
-          <span>© ELHAI ENTERPRISE 2025</span>
-        </div>
-      </footer>
-    </main>
+          <div className="services-grid">
+            {services.map((service, index) => (
+              <motion.article
+                className="service-card"
+                key={service.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ y: -6 }}
+              >
+                <span className="service-number">{service.accent}</span>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section className="about-section section-shell" id="about">
+          <div className="about-visual">
+            <img
+              src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80"
+              alt="Solar panels on a modern rooftop"
+            />
+            <div className="visual-badge">
+              <span>Reliable energy</span>
+              <strong>Cleaner future</strong>
+            </div>
+          </div>
+
+          <div className="about-copy">
+            <p className="eyebrow eyebrow-dark">Why ELHAI</p>
+            <h2>From strategy to sunlight, we connect the full solar journey.</h2>
+            <p>
+              Whether you are a homeowner looking for better energy independence or a growing business needing consistent power and stronger sustainability messaging, we blend practical project delivery with market-ready visibility.
+            </p>
+            <ul>
+              <li>Turnkey solar project support</li>
+              <li>Lead generation and brand positioning</li>
+              <li>Import/export coordination for energy equipment</li>
+              <li>General contracting and site execution</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="process-section section-shell" id="process">
+          <div className="section-heading narrow">
+            <p className="eyebrow eyebrow-dark">Our process</p>
+            <h2>Simple, structured, and result-driven.</h2>
+          </div>
+
+          <div className="process-grid">
+            {process.map((step, index) => (
+              <motion.div
+                className="process-step"
+                key={step}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.09 }}
+              >
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <p>{step}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="cta-section" id="contact">
+          <div className="cta-inner">
+            <div>
+              <p className="eyebrow">Ready to build with solar?</p>
+              <h2>Let’s power your next project with clean energy and smarter execution.</h2>
+            </div>
+            <a href="mailto:hello@elhaienterprise.com" className="primary-button">hello@elhaienterprise.com</a>
+          </div>
+        </section>
+      </main>
+    </div>
   )
 }
 
